@@ -411,7 +411,7 @@
             card = existingCards[i];
             if(!card) continue;
             if(i > 0) {
-              card.style.transform = card.style.webkitTransform = 'translate3d(0, ' + (i * 4) + 'px, 0)';
+              card.style.transform = card.style.webkitTransform = 'translate3d(0, ' + (i * 20) + 'px, 0) scale(0.' + (100 - (i * 5)) + ')';
             }
             card.style.zIndex = (existingCards.length - i);
           }

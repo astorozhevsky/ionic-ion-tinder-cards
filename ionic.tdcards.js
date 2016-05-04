@@ -434,8 +434,12 @@
           secondCard = cards.length > 2 && cards[1];
           thirdCard = cards.length > 3 && cards[2];
 
-          secondCard && bringCardUp(secondCard, amt, 4);
-          thirdCard && bringCardUp(thirdCard, amt, 8);
+          /**
+           * Max
+           * Commenting these out because it disrupts the stacking of the cards
+           */
+          // secondCard && bringCardUp(secondCard, amt, 4);
+          // thirdCard && bringCardUp(thirdCard, amt, 8);
         };
       }]
     }

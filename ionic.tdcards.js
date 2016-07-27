@@ -47,8 +47,8 @@
     /**
      * Set the X position of the card.
      */
-    setX: function (x) {
-      this.el.style[ionic.CSS.TRANSFORM] = 'translate3d(' + x + 'px,' + this.y + 'px, 0)';
+    setX: function(x) {
+      this.el.style.transform = this.el.style.webkitTransform = 'translateX(' + x + 'px)';
       this.x = x;
       this.startX = x;
     },
@@ -56,8 +56,8 @@
     /**
      * Set the Y position of the card.
      */
-    setY: function (y) {
-      this.el.style[ionic.CSS.TRANSFORM] = 'translate3d(' + this.x + 'px,' + y + 'px, 0)';
+    setY: function(y) {
+      this.el.style.transform = this.el.style.webkitTransform = 'translateY(' + y + 'px)';
       this.y = y;
       this.startY = y;
     },

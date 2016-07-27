@@ -117,6 +117,7 @@
     swipeRight: function () {
       this.transitionOut("right");
     },
+
     swipeLeft: function () {
       this.transitionOut("left");
     },
@@ -437,6 +438,7 @@
             while (i < swipeableCards.length && swipeableCards[i].destroyed) {
               i++;
             }
+
             return (i < swipeableCards.length) ? swipeableCards[i] : undefined;
           };
 

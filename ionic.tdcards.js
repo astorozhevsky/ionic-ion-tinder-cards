@@ -134,46 +134,6 @@
     /**
      * Fly the card out or animate back into resting position.
      */
-    // transitionOut: function(e) {
-    //   var self = this;
-    //
-    //   if(this.isUnderThreshold()) {
-    //     self.onSnapBack(this.x, this.y, this.rotationAngle);
-    //     return;
-    //   }
-    //
-    //   self.onTransitionOut(self.thresholdAmount);
-    //
-    //   var angle = Math.atan(e.gesture.deltaX / e.gesture.deltaY);
-    //
-    //   var dir = this.thresholdAmount < 0 ? -1 : 1;
-    //   var targetX;
-    //   if(this.x > 0) {
-    //     targetX = (this.parentWidth / 2) + (this.width);
-    //   } else {
-    //     targetX = - (this.parentWidth + this.width);
-    //   }
-    //
-    //   // Target Y is just the "opposite" side of the triangle of targetX as the adjacent edge (sohcahtoa yo)
-    //   var targetY = targetX / Math.tan(angle);
-    //
-    //   // Fly out
-    //   var rotateTo = this.rotationAngle;//(this.rotationAngle this.rotationDirection * 0.2));// || (Math.random() * 0.4);
-    //
-    //   var duration = 0.3 - Math.min(Math.max(Math.abs(e.gesture.velocityX)/10, 0.05), 0.2);
-    //
-    //   ionic.requestAnimationFrame(function() {
-    //     self.el.style.transform = self.el.style.webkitTransform = 'translate3d(' + targetX + 'px, ' + targetY + 'px,0) rotate(' + self.rotationAngle + 'rad)';
-    //     self.el.style.transition = self.el.style.webkitTransition = 'all ' + duration + 's ease-in-out';
-    //   });
-    //
-    //   //this.onSwipe && this.onSwipe();
-    //
-    //   // Trigger destroy after card has swiped out
-    //   setTimeout(function() {
-    //     self.onDestroy && self.onDestroy();
-    //   }, duration * 1000);
-    // },
 
     transitionOut: function(e) {
       var self = this;
@@ -202,8 +162,7 @@
         targetY = targetX / Math.tan(angle);
         velocityX = e.gesture.velocityX;
         rotateTo = this.rotationAngle;
-      }
-      else {
+      } else {
         angle = -1.5;
         targetY = 100;
         velocityX = 0.5;

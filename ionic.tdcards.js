@@ -242,7 +242,7 @@
 
     _doDrag: function (e) {
       e.preventDefault();
-console.log(1111);
+
       var o = e.gesture.deltaX / 1000;
 
       this.rotationAngle = Math.atan(o);

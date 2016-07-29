@@ -242,7 +242,7 @@
 
     _doDrag: function (e) {
       e.preventDefault();
-
+console.log(1111);
       var o = e.gesture.deltaX / 1000;
 
       this.rotationAngle = Math.atan(o);
@@ -446,15 +446,11 @@
             // Removed animation, too resource-consuming on Android.
           };
 
-          this.clearSwipeableCards = function () {
+          var clearSwipeCards = function () {
             swipeableCards = [];
           };
 
           this.registerCard = function (card) {
-            if (swipeableCards.length == 2) {
-              this.clearSwipeableCards();
-            }
-
             initCard(card, swipeableCards.length);
             swipeableCards.push(card);
           };
@@ -468,8 +464,19 @@
             var topCard = findTopCard();
             if (topCard) topCard.swipeLeft();
           };
+
+          $rootScope.$on('clearSwipeCards', function () {
+            clearSwipeCards();
+          });
         }]
       };
+    }])
+    .factory('TDCardDelegate', ['$rootScope', function($rootScope) {
+      return {
+        clearCards: function () {
+          $rootScope.$emit('clearSwipeCards');
+        }
+      }
     }]);
 
 })(window.ionic);

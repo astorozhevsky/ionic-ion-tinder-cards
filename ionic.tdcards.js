@@ -404,6 +404,7 @@
               },
             });
             $scope.$root.swipeCard = swipeableCard;
+
             swipeCards.registerCard(swipeableCard);
           }
         }
@@ -438,7 +439,6 @@
             while (i < swipeableCards.length && swipeableCards[i].destroyed) {
               i++;
             }
-
             return (i < swipeableCards.length) ? swipeableCards[i] : undefined;
           };
 
@@ -446,7 +446,15 @@
             // Removed animation, too resource-consuming on Android.
           };
 
+          this.clearSwipeableCards = function () {
+            swipeableCards = [];
+          };
+
           this.registerCard = function (card) {
+            if (swipeableCards.length == 2) {
+              this.clearSwipeableCards();
+            }
+
             initCard(card, swipeableCards.length);
             swipeableCards.push(card);
           };

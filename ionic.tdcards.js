@@ -464,6 +464,11 @@
             var topCard = findTopCard();
             if (topCard) topCard.swipeLeft();
           };
+          
+          $scope.internalControl.snapBack = function () {
+            var topCard = findTopCard();
+            if (topCard) topCard.snapBack();
+          };
 
           $rootScope.$on('clearSwipeCards', function () {
             clearSwipeCards();

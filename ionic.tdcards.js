@@ -41,6 +41,8 @@
       this.startX = this.startY = this.x = this.y = 0;
       this.destroyed = false;
 
+      this.swipeEnabled = true;
+
       this.bindEvents();
     },
 
@@ -88,6 +90,10 @@
      */
     setPopInDuration: function (duration) {
       this.cardPopInDuration = duration;
+    },
+
+    setSwipeEnabled: function (enabled) {
+      this.swipeEnabled = enabled;
     },
 
     /**
@@ -200,8 +206,7 @@
          self._transformOriginLeft();
          }
          */
-        var disabled = this.getAttribute('disabled') == 'true';
-        if (!disabled) {
+        if (self.swipeEnabled) {
           ionic.requestAnimationFrame(function () {
             self._doDragStart(e)
           });
@@ -209,8 +214,7 @@
       }, this.el);
 
       ionic.onGesture('drag', function (e) {
-        var disabled = this.getAttribute('disabled') == 'true';
-        if (!disabled) {
+        if (self.swipeEnabled) {
           ionic.requestAnimationFrame(function () {
             self._doDrag(e)
           });
@@ -220,8 +224,7 @@
       }, this.el);
 
       ionic.onGesture('dragend', function (e) {
-        var disabled = this.getAttribute('disabled') == 'true';
-        if (!disabled) {
+        if (self.swipeEnabled) {
           ionic.requestAnimationFrame(function () {
             self._doDragEnd(e)
           });
@@ -473,7 +476,12 @@
             var topCard = findTopCard();
             if (topCard) topCard.swipeLeft();
           };
-          
+
+          $scope.internalControl.setSwipeEnabled = function (enabled) {
+            var topCard = findTopCard();
+            if (topCard) topCard.setSwipeEnabled(enabled);
+          };
+
           $scope.internalControl.snapBack = function () {
             var topCard = findTopCard();
             if (topCard) topCard.snapBack();

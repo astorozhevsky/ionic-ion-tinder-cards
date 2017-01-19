@@ -200,23 +200,32 @@
          self._transformOriginLeft();
          }
          */
-        ionic.requestAnimationFrame(function () {
-          self._doDragStart(e)
-        });
+        var disabled = this.getAttribute('disabled') == 'true';
+        if (!disabled) {
+          ionic.requestAnimationFrame(function () {
+            self._doDragStart(e)
+          });
+        }
       }, this.el);
 
       ionic.onGesture('drag', function (e) {
-        ionic.requestAnimationFrame(function () {
-          self._doDrag(e)
-        });
-        // Indicate we want to stop parents from using this
-        e.gesture.srcEvent.preventDefault();
+        var disabled = this.getAttribute('disabled') == 'true';
+        if (!disabled) {
+          ionic.requestAnimationFrame(function () {
+            self._doDrag(e)
+          });
+          // Indicate we want to stop parents from using this
+          e.gesture.srcEvent.preventDefault();
+        }
       }, this.el);
 
       ionic.onGesture('dragend', function (e) {
-        ionic.requestAnimationFrame(function () {
-          self._doDragEnd(e)
-        });
+        var disabled = this.getAttribute('disabled') == 'true';
+        if (!disabled) {
+          ionic.requestAnimationFrame(function () {
+            self._doDragEnd(e)
+          });
+        }
       }, this.el);
     },
 
